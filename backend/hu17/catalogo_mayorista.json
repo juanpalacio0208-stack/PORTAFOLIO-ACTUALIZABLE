@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "nombre": "Body Wash EOS Vanilla Cashmere",
+    "descripcion": "Jabón líquido corporal con aroma a vainilla.",
+    "categoria": "Cuidado personal",
+    "precio_mayorista": 70000,
+    "cantidad_minima": 6,
+    "condiciones_compra": "Pedido mínimo de 6 unidades de esta referencia; coordinar entrega y pago con la administradora.",
+    "disponible": true,
+    "venta_mayorista": true
+  },
+  {
+    "id": 2,
+    "nombre": "Vaseline Cocoa Radiant",
+    "descripcion": "Loción corporal con manteca de cacao.",
+    "categoria": "Cuidado personal",
+    "precio_mayorista": 26000,
+    "cantidad_minima": 12,
+    "condiciones_compra": "Pedido mínimo de 12 unidades de esta referencia; disponibilidad sujeta a confirmación.",
+    "disponible": true,
+    "venta_mayorista": true
+  },
+  {
+    "id": 3,
+    "nombre": "Bálsamo Labial",
+    "descripcion": "Bálsamo hidratante para labios.",
+    "categoria": "Belleza",
+    "precio_mayorista": 19000,
+    "cantidad_minima": 12,
+    "condiciones_compra": "Pedido mínimo de 12 unidades de esta referencia; coordinar condiciones finales con la administradora.",
+    "disponible": false,
+    "venta_mayorista": true
+  },
+  {
+    "id": 4,
+    "nombre": "Perfume Importado",
+    "descripcion": "Fragancia importada para uso diario.",
+    "categoria": "Perfumes",
+    "precio_mayorista": 145000,
+    "cantidad_minima": 4,
+    "condiciones_compra": "Pedido mínimo de 4 unidades de esta referencia; el precio corresponde a una unidad.",
+    "disponible": true,
+    "venta_mayorista": true
+  },
+  {
+    "id": 5,
+    "nombre": "Gafas de sol",
+    "descripcion": "Accesorio de moda.",
+    "categoria": "Accesorios",
+    "precio_mayorista": 79000,
+    "cantidad_minima": 5,
+    "condiciones_compra": "Producto exclusivo de venta al detal en este ejemplo.",
+    "disponible": true,
+    "venta_mayorista": false
+  }
+]
