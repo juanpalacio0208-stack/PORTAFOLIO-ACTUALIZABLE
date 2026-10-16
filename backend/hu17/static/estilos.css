@@ -1,0 +1,49 @@
+:root { font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; color: #202020; background: #fbfaf8; font-synthesis: none; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+a { text-decoration: none; color: inherit; }
+.contenedor { max-width: 1160px; margin: 0 auto; width: calc(100% - 48px); }
+.barra { background: #101010; color: #f4f4f4; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; min-height: 82px; gap: 16px; }
+.marca { display: flex; align-items: center; gap: 14px; font-family: Georgia, serif; font-size: 1.15rem; letter-spacing: .08em; font-weight: 700; }
+.marca img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.marca em { display: block; font: normal 400 .62rem system-ui, sans-serif; letter-spacing: .3em; margin-top: 3px; }
+nav a { font-size: .92rem; font-weight: 600; color: #e5bd4b; }
+.hero { background: radial-gradient(circle at 83% 46%, #5d4619 0, #241e16 23%, #111 70%); color: #fff; padding: 88px 0 100px; }
+.antetitulo { color: #e4bd54; font-size: .76rem; letter-spacing: .21em; font-weight: 800; }
+h1 { font-family: Georgia, serif; font-size: clamp(3rem, 7vw, 5.5rem); margin: 14px 0 20px; line-height: 1.03; }
+h1 span { color: #ebc660; }
+.introduccion { color: #e1dfd9; font-size: 1.11rem; line-height: 1.7; max-width: 680px; }
+.boton { display: inline-flex; align-items: center; gap: 36px; background: #edc657; border-radius: 30px; color: #121212; font-weight: 800; padding: 15px 25px; margin-top: 22px; }
+.boton:hover { background: #ffe18c; }
+.seccion { padding: 65px 0 95px; }
+.encabezado-seccion { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 30px; }
+.etiqueta { color: #b38016; font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+h2 { font-family: Georgia, serif; font-size: 2.35rem; margin: 8px 0; }
+.encabezado-seccion p { color: #6a6a6a; margin: 5px 0; }
+.contador { flex-shrink: 0; background: #fff0c9; border: 1px solid #f6e2ae; border-radius: 30px; color: #836311; padding: 11px 18px; font-weight: 700; }
+.grilla { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.producto { overflow: hidden; background: #fff; border-radius: 15px; box-shadow: 0 8px 28px #00000012; border: 1px solid #e9e5df; }
+.ilustracion { height: 178px; display: grid; place-items: center; background: linear-gradient(140deg, #171311, #534126 67%, #b79647); }
+.motivo { color: #f4d276; font-size: 5.4rem; text-shadow: 0 10px 30px #0008; }
+.detalle { padding: 21px 22px 24px; }
+.categoria { display: inline-block; color: #795a14; background: #fff4d7; padding: 6px 11px; border-radius: 30px; font-size: .74rem; font-weight: 700; }
+h3 { font-size: 1.19rem; margin: 15px 0 6px; min-height: 50px; }
+.descripcion { font-size: .88rem; line-height: 1.5; min-height: 42px; color: #737373; }
+.precio { color: #ae7710; font-weight: 800; font-size: 1.55rem; margin: 21px 0 14px; }
+.precio small { font-size: .78rem; color: #6b6b6b; font-weight: 400; }
+.minimo { background: #f5f5f2; border-radius: 8px; padding: 12px 13px; font-size: .84rem; }
+.minimo strong { color: #111; }
+details { margin-top: 15px; border-top: 1px solid #eae6de; padding-top: 14px; }
+summary { cursor: pointer; font-weight: 700; font-size: .85rem; color: #7d5911; }
+details p { color: #565656; font-size: .85rem; line-height: 1.5; }
+.vacio { background: white; grid-column: 1/-1; text-align: center; padding: 65px 20px; border-radius: 14px; }
+.vacio strong { font-size: 1.3rem; }
+.vacio p { color: #777; }
+footer { background: #111; color: #eee; }
+.pie { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 35px 0; }
+.pie span { font-family: Georgia, serif; font-weight: 700; }
+.pie p { font-size: .77rem; color: #aaa; }
+@media (max-width: 950px) { .grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .contenedor { width: calc(100% - 32px); } .cabecera { min-height: 76px; } .marca { font-size: .79rem; } .marca img { width: 44px; height: 44px; } .marca em { font-size: .48rem; } nav { display: none; } .hero { padding: 60px 0 70px; } .grilla { grid-template-columns: 1fr; } .encabezado-seccion { align-items: flex-start; flex-direction: column; } h2 { font-size: 1.9rem; } .pie { flex-direction: column; align-items: flex-start; } }
