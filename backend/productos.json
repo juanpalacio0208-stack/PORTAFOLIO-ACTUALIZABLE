@@ -1,0 +1,6 @@
+[
+  {"id": 1, "nombre": "Body Wash EOS Vanilla Cashmere", "descripcion": "Jabón líquido corporal con aroma a vainilla.", "categoria": "Cuidado personal", "precio": 85000, "disponible": true},
+  {"id": 2, "nombre": "Vaseline Cocoa Radiant", "descripcion": "Crema corporal hidratante.", "categoria": "Cuidado personal", "precio": 32000, "disponible": true},
+  {"id": 3, "nombre": "Bálsamo Labial", "descripcion": "Bálsamo hidratante para labios.", "categoria": "Belleza", "precio": 25000, "disponible": false},
+  {"id": 4, "nombre": "Perfume Importado", "descripcion": "Fragancia importada.", "categoria": "Perfumes", "precio": 180000, "disponible": true}
+]
