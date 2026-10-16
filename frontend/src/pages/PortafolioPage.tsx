@@ -1,7 +1,12 @@
 import ProductoCard from '../components/ProductoCard'
 import { productos } from '../data/Productos'
+import type { Producto } from '../types/Producto'
 
-function PortafolioPage() {
+interface Props {
+  verDetalle: (producto: Producto) => void
+}
+
+function PortafolioPage({ verDetalle }: Props) {
   const productosDisponibles = productos.filter((producto) => producto.disponible)
 
   return (
@@ -35,7 +40,7 @@ function PortafolioPage() {
             {productosDisponibles.length > 0 ? (
               <div className="productos-grid">
                 {productosDisponibles.map((producto) => (
-                  <ProductoCard key={producto.id} producto={producto} />
+                  <ProductoCard key={producto.id} producto={producto} verDetalle={verDetalle} />
                 ))}
               </div>
             ) : (
