@@ -1,0 +1,18 @@
+/* Estilos exclusivos de HU-03. No reemplazan el CSS de HU-01. */
+.detalle-producto { padding-top: 2.5rem; padding-bottom: 5rem; min-height: 70vh; }
+.boton-volver, .detalle-logo, .detalle-nav { border: 0; background: none; font: inherit; cursor: pointer; color: inherit; }
+.detalle-logo { font-weight: 800; font-size: 1.5rem; }
+.detalle-nav { font-weight: 600; }
+.boton-volver { margin-bottom: 2rem; padding: 0.5rem 0; font-weight: 600; }
+.boton-volver:hover, .detalle-nav:hover { text-decoration: underline; }
+.detalle-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+.detalle-imagen { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: contain; border-radius: 16px; background: #f2f2f2; }
+.detalle-informacion h1 { margin: 1rem 0; font-size: clamp(2rem,4vw,3rem); line-height: 1.12; }
+.detalle-informacion p { line-height: 1.65; }
+.detalle-precio { display: block; font-size: 1.8rem; margin: 1.25rem 0 2rem; }
+.detalle-informacion h2 { font-size: 1.25rem; }
+.detalle-atributos { display: grid; grid-template-columns: 125px 1fr; gap: .9rem 1rem; padding: 1.25rem 0; border-top: 1px solid #ddd; }
+.detalle-atributos dt { font-weight: 700; }
+.detalle-atributos dd { margin: 0; overflow-wrap: anywhere; }
+.detalle-aviso { padding: 1rem; background: #f5f5f5; border-radius: 10px; }
+@media (max-width: 720px) { .detalle-grid { grid-template-columns: 1fr; } .detalle-atributos { grid-template-columns: 100px 1fr; } }
