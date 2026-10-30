@@ -1,5 +1,7 @@
+
+import { useEffect, useState } from 'react'
 import ProductoCard from '../components/ProductoCard'
-import { productos } from '../data/Productos'
+import { obtenerProductos } from '../services/productosApi'
 import type { Producto } from '../types/Producto'
 
 interface Props {
@@ -7,7 +9,40 @@ interface Props {
 }
 
 function PortafolioPage({ verDetalle }: Props) {
-  const productosDisponibles = productos.filter((producto) => producto.disponible)
+  const [productos, setProductos] = useState<Producto[]>([])
+  const [cargando, setCargando] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    let activo = true
+
+    async function cargarProductos() {
+      try {
+        const datos = await obtenerProductos()
+        if (activo) {
+          setProductos(datos)
+        }
+      } catch {
+        if (activo) {
+          setError('No fue posible cargar los productos. Intenta nuevamente.')
+        }
+      } finally {
+        if (activo) {
+          setCargando(false)
+        }
+      }
+    }
+
+    void cargarProductos()
+
+    return () => {
+      activo = false
+    }
+  }, [])
+
+  const productosDisponibles = productos.filter(
+    (producto) => producto.disponible
+  )
 
   return (
     <>
@@ -17,19 +52,30 @@ function PortafolioPage({ verDetalle }: Props) {
           <nav>
             <a href="#inicio">Inicio</a>
             <a href="#productos">Productos</a>
-            <button type="button" className="boton-ingresar">Ingresar</button>
+            <button type="button" className="boton-ingresar">
+              Ingresar
+            </button>
           </nav>
         </div>
       </header>
+
       <main>
         <section className="hero" id="inicio">
           <div className="contenedor">
-            <span className="hero-etiqueta">Productos importados</span>
+            <span className="hero-etiqueta">
+              Productos importados
+            </span>
             <h1>Encuentra productos seleccionados para ti</h1>
-            <p>Explora nuestro portafolio y conoce los productos disponibles actualmente.</p>
-            <a href="#productos" className="boton-principal">Ver productos</a>
+            <p>
+              Explora nuestro portafolio y conoce los productos
+              disponibles actualmente.
+            </p>
+            <a href="#productos" className="boton-principal">
+              Ver productos
+            </a>
           </div>
         </section>
+
         <section className="productos-seccion" id="productos">
           <div className="contenedor">
             <div className="titulo-seccion">
@@ -37,10 +83,24 @@ function PortafolioPage({ verDetalle }: Props) {
               <h2>Productos disponibles</h2>
               <p>Conoce los productos disponibles para la venta.</p>
             </div>
-            {productosDisponibles.length > 0 ? (
+
+            {cargando ? (
+              <div className="sin-productos" role="status">
+                <p>Cargando productos...</p>
+              </div>
+            ) : error ? (
+              <div className="sin-productos" role="alert">
+                <h3>Error al cargar productos</h3>
+                <p>{error}</p>
+              </div>
+            ) : productosDisponibles.length > 0 ? (
               <div className="productos-grid">
                 {productosDisponibles.map((producto) => (
-                  <ProductoCard key={producto.id} producto={producto} verDetalle={verDetalle} />
+                  <ProductoCard
+                    key={producto.id}
+                    producto={producto}
+                    verDetalle={verDetalle}
+                  />
                 ))}
               </div>
             ) : (
@@ -52,6 +112,7 @@ function PortafolioPage({ verDetalle }: Props) {
           </div>
         </section>
       </main>
+
       <footer>
         <div className="contenedor">
           <strong>Portafolio Actualizable</strong>

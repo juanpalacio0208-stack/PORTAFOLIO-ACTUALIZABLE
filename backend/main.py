@@ -5,6 +5,7 @@ hasta implementar control de acceso para el rol administrador.
 """
 
 import json
+from fastapi.middleware.cors import CORSMiddleware
 from html import escape
 from pathlib import Path
 
@@ -12,8 +13,18 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from hu08.router import router as solicitudes_router
+
 
 app = FastAPI(title="Importaciones Euroamericanas — HU-06", version="0.1.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+)
+app.include_router(solicitudes_router)
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")
 
@@ -64,6 +75,14 @@ def consultar_producto(producto_id: int):
             return producto
     raise HTTPException(status_code=404, detail="Producto no encontrado")
 
+@app.get("/api/productos", response_model=list[Producto])
+def consultar_catalogo_publico():
+    """Consulta los productos disponibles para los compradores."""
+    return [
+        producto
+        for producto in cargar_productos()
+        if producto.disponible
+    ]
 
 @app.get("/admin/productos", response_class=HTMLResponse)
 def vista_productos():
