@@ -14,6 +14,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from hu08.router import router as solicitudes_router
+from hu09.router import router as contacto_router
 
 
 app = FastAPI(title="Importaciones Euroamericanas — HU-06", version="0.1.0")
@@ -25,6 +26,7 @@ app.add_middleware(
     allow_headers=["Content-Type"],
 )
 app.include_router(solicitudes_router)
+app.include_router(contacto_router)
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")
 
