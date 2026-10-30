@@ -16,3 +16,25 @@
 .detalle-atributos dd { margin: 0; overflow-wrap: anywhere; }
 .detalle-aviso { padding: 1rem; background: #f5f5f5; border-radius: 10px; }
 @media (max-width: 720px) { .detalle-grid { grid-template-columns: 1fr; } .detalle-atributos { grid-template-columns: 100px 1fr; } }
+.solicitud-confirmacion {
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.solicitud-confirmacion h2 {
+  margin-top: 0;
+  color: #166534;
+}
+
+.solicitud-confirmacion p {
+  line-height: 1.6;
+}
+
+.detalle-informacion button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
