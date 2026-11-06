@@ -1,0 +1,68 @@
+
+.contacto-contenedor {
+  min-height: 100vh;
+  padding: 48px 20px;
+  background: #f8f8f8;
+}
+
+.contacto-tarjeta {
+  max-width: 560px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contacto-tarjeta h1 {
+  margin-bottom: 12px;
+}
+
+.contacto-tarjeta form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.contacto-tarjeta label {
+  font-weight: 600;
+}
+
+.contacto-tarjeta input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.contacto-tarjeta input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+.contacto-tarjeta p[role="alert"] {
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.contacto-tarjeta button[type="submit"] {
+  padding: 14px;
+  background: #171717;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.contacto-tarjeta button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contacto-volver {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
