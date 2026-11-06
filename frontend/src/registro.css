@@ -1,0 +1,68 @@
+
+.registro-contenedor {
+  min-height: 100vh;
+  padding: 48px 20px;
+  background: #f8f8f8;
+}
+
+.registro-tarjeta {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.registro-tarjeta h1 {
+  margin-bottom: 12px;
+}
+
+.registro-tarjeta form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.registro-tarjeta label {
+  font-weight: 600;
+}
+
+.registro-tarjeta input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.registro-tarjeta input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+.registro-tarjeta p[role="alert"] {
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.registro-tarjeta button[type="submit"],
+.registro-tarjeta button:not(.registro-volver) {
+  padding: 14px;
+  background: #171717;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.registro-tarjeta button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.registro-volver {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
