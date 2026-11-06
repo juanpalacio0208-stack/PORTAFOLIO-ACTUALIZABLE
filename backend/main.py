@@ -5,6 +5,7 @@ hasta implementar control de acceso para el rol administrador.
 """
 
 import json
+
 from html import escape
 from pathlib import Path
 
@@ -12,8 +13,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from hu11.router import router as registro_router
 
 app = FastAPI(title="Importaciones Euroamericanas — HU-06", version="0.1.0")
+app.include_router(registro_router)
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")
 
