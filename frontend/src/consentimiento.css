@@ -1,0 +1,22 @@
+.hu14-fondo{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:radial-gradient(ellipse at 50% 0%,#272116 0%,#0b0b0d 65%);color:#f4f1e8}
+.hu14-panel{width:min(100%,640px);background:#141416;border:1px solid #8d753f;border-radius:20px;padding:clamp(24px,5vw,44px);box-shadow:0 18px 60px #0009}
+.hu14-volver{border:0;background:transparent;color:#e1bd68;cursor:pointer;padding:4px 0;margin-bottom:22px;font-size:14px}
+.hu14-etiqueta{display:block;letter-spacing:2.4px;font-size:11px;font-weight:700;color:#caa95d;margin-bottom:10px}
+.hu14-panel h1{font-size:clamp(27px,5vw,38px);line-height:1.2;color:#efd494;margin:0 0 14px}
+.hu14-descripcion{line-height:1.7;color:#c2bdb2;margin-bottom:27px}
+.hu14-opciones{border:0;padding:0;margin:0;display:grid;gap:12px;min-width:0}
+.hu14-opciones legend{font-weight:600;margin-bottom:16px;color:#f2e8d1}
+.hu14-opcion{display:flex;gap:14px;align-items:center;padding:18px 16px;border-radius:13px;border:1px solid #484338;background:#1f1e1d;cursor:pointer}
+.hu14-opcion.seleccionada{border-color:#d4ad5c;background:#30291b}
+.hu14-opcion input{accent-color:#d5ad5f;width:19px;height:19px;flex-shrink:0}
+.hu14-opcion span{display:flex;flex-direction:column;gap:6px}
+.hu14-opcion small{color:#b6ac9b;font-size:13px;line-height:1.5}
+.hu14-estado{color:#d8c79d;font-size:14px;margin:18px 0}
+.hu14-guardar{margin-top:22px;border:0;background:linear-gradient(135deg,#eed18e,#bc8f39);color:#1d1509;padding:15px 24px;border-radius:10px;font-weight:800;cursor:pointer;width:100%;font-size:15px}
+.hu14-guardar:disabled{opacity:.65;cursor:not-allowed}
+.hu14-error{color:#ffb7af;margin-top:16px}
+.hu14-exito{color:#c8e4b3;margin-top:16px}
+.hu14-nota{font-size:12px;color:#aba398;margin:24px 0 0;line-height:1.5}
+@media(max-width:450px){.hu14-panel{padding:24px 18px}.hu14-opcion{padding:15px 12px}}
+.hu14-abrir{display:block;width:100%;padding:13px 17px;margin:18px 0;border-radius:10px;border:1px solid #d9b86f;color:#f8da97;background:#2a2316;font-weight:700;cursor:pointer}
+.hu14-abrir:hover{background:#3c311d}

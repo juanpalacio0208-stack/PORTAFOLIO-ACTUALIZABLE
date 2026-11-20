@@ -5,14 +5,16 @@ import {
   type UsuarioAutenticado,
 } from '../services/loginApi'
 import '../login.css'
+import '../consentimiento.css'
 
 interface Props {
   usuario: UsuarioAutenticado
   onLogout: () => void
   onVolver: () => void
+  onPreferencias: () => void
 }
 
-function CuentaPage({ usuario, onLogout, onVolver }: Props) {
+function CuentaPage({ usuario, onLogout, onVolver, onPreferencias }: Props) {
   const [error, setError] = useState('')
   const [cerrando, setCerrando] = useState(false)
 
@@ -44,6 +46,15 @@ function CuentaPage({ usuario, onLogout, onVolver }: Props) {
           disabled={cerrando}
         >
           Volver al portafolio
+        </button>
+
+        <button
+          type="button"
+          className="hu14-abrir"
+          onClick={onPreferencias}
+          disabled={cerrando}
+        >
+          Preferencias de notificaciones
         </button>
 
         {error && <p role="alert">{error}</p>}

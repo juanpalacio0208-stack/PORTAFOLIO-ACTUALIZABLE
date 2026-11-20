@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage'
 import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
 import RestablecerContrasenaPage from './pages/RestablecerContrasenaPage'
 import CuentaPage from './pages/CuentaPage'
+import ConsentimientoNotificacionesPage from './pages/ConsentimientoNotificacionesPage'
 
 import {
   consultarSesion,
@@ -20,7 +21,7 @@ import type { SolicitudProducto } from './services/solicitudesApi'
 
 import './detalle-producto.css'
 
-type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'recuperar' | 'restablecer'
+type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'recuperar' | 'restablecer' | 'notificaciones'
 
 function App() {
   const [tokenRestablecimiento] = useState(() =>
@@ -107,11 +108,16 @@ function App() {
     )
   }
 
+  if (vista === 'notificaciones' && usuario) {
+    return <ConsentimientoNotificacionesPage volver={() => setVista('cuenta')} />
+  }
+
   if (vista === 'cuenta' && usuario) {
     return (
       <CuentaPage
         usuario={usuario}
         onVolver={() => setVista('portafolio')}
+        onPreferencias={() => setVista('notificaciones')}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')
