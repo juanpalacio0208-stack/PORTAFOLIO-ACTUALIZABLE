@@ -10,6 +10,7 @@ import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
 import RestablecerContrasenaPage from './pages/RestablecerContrasenaPage'
 import CuentaPage from './pages/CuentaPage'
 import ConsentimientoNotificacionesPage from './pages/ConsentimientoNotificacionesPage'
+import AdministrarUsuariosPage from './pages/AdministrarUsuariosPage'
 
 import {
   consultarSesion,
@@ -21,7 +22,7 @@ import type { SolicitudProducto } from './services/solicitudesApi'
 
 import './detalle-producto.css'
 
-type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'recuperar' | 'restablecer' | 'notificaciones'
+type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'recuperar' | 'restablecer' | 'notificaciones' | 'usuarios'
 
 function App() {
   const [tokenRestablecimiento] = useState(() =>
@@ -112,12 +113,17 @@ function App() {
     return <ConsentimientoNotificacionesPage volver={() => setVista('cuenta')} />
   }
 
+  if (vista === 'usuarios' && usuario?.rol === 'administrador') {
+    return <AdministrarUsuariosPage volver={() => setVista('cuenta')} />
+  }
+
   if (vista === 'cuenta' && usuario) {
     return (
       <CuentaPage
         usuario={usuario}
         volverCatalogo={() => setVista('portafolio')}
         onPreferencias={() => setVista('notificaciones')}
+        onAdministrarUsuarios={() => setVista('usuarios')}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')

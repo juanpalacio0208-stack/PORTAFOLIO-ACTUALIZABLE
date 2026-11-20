@@ -73,6 +73,7 @@ def obtener_usuario_autenticado(request: Request) -> dict:
                 usuarios.nombre_completo,
                 usuarios.correo,
                 usuarios.activo,
+                usuarios.rol,
                 sesiones.fecha_expiracion
             FROM sesiones
             JOIN usuarios
@@ -108,6 +109,7 @@ def obtener_usuario_autenticado(request: Request) -> dict:
         "nombre_completo": fila["nombre_completo"],
         "correo": fila["correo"],
         "activo": bool(fila["activo"]),
+        "rol": fila["rol"],
     }
 
 

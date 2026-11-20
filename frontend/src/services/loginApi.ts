@@ -6,7 +6,9 @@ export interface UsuarioAutenticado {
   nombre_completo: string
   correo: string
   activo: boolean
+  rol: 'usuario' | 'administrador'
 }
+
 
 export async function iniciarSesion(
   correo: string,

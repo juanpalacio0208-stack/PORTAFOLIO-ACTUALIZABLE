@@ -76,3 +76,10 @@ git push -u origin feature/hu-06-consultar-productos-admin
 ```
 
 No hagas merge a `main`. El PR debe ir a `develop` cuando tu equipo lo apruebe.
+# HU-13: administración de usuarios
+
+Las cuentas nuevas reciben el rol `usuario`. Para habilitar el primer administrador
+en una instalación local, configura `ADMIN_CORREO` con el correo de una cuenta ya
+registrada y reinicia/usa la API. El rol se asigna durante la inicialización de la
+base existente y puede gestionarse luego desde **Mi cuenta → Administrar usuarios**.
+La API rechaza la administración sin una sesión con rol `administrador`.

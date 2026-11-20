@@ -22,6 +22,7 @@ from hu12.router import router as login_router
 from hu18.router import router as recuperacion_router
 from hu14.router import router as consentimiento_router
 from hu15_16_19.router import router as novedades_router
+from hu13.router import router as usuarios_admin_router
 
 app = FastAPI(
     title="Importaciones Euroamericanas — HU-06",
@@ -46,6 +47,7 @@ app.include_router(login_router)
 app.include_router(recuperacion_router)
 app.include_router(consentimiento_router)
 app.include_router(novedades_router)
+app.include_router(usuarios_admin_router)
 
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")

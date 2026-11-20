@@ -12,6 +12,7 @@ class UsuarioAutenticado(BaseModel):
     nombre_completo: str
     correo: EmailStr
     activo: bool
+    rol: str = "usuario"
 
 
 class RespuestaLogin(BaseModel):

@@ -5,9 +5,9 @@ import '../login.css'
 import '../novedades.css'
 import '../consentimiento.css'
 
-interface Props { usuario: UsuarioAutenticado; onLogout: () => void; volverCatalogo?: () => void; onPreferencias: () => void }
+interface Props { usuario: UsuarioAutenticado; onLogout: () => void; volverCatalogo?: () => void; onPreferencias: () => void; onAdministrarUsuarios: () => void }
 
-export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPreferencias }: Props) {
+export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPreferencias, onAdministrarUsuarios }: Props) {
   const [error, setError] = useState('')
   const [aviso, setAviso] = useState('')
   const [permiso, setPermiso] = useState(false)
@@ -42,6 +42,11 @@ export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPrefer
   return <main className="login-contenedor"><div className="cuenta-contenido">
     <section className="login-tarjeta">
       <h1>Mi cuenta</h1><p>Bienvenido, <strong>{usuario.nombre_completo}</strong>.</p><p>{usuario.correo}</p>
+      {usuario.rol === 'administrador' && (
+        <button type="button" className="hu14-abrir" onClick={onAdministrarUsuarios}>
+          Administrar usuarios
+        </button>
+      )}
       <button type="button" className="hu14-abrir" onClick={onPreferencias}>Preferencias de notificaciones</button>
       {volverCatalogo && <button type="button" onClick={volverCatalogo}>Volver al catálogo</button>}
       <button type="button" onClick={() => void ejecutar(async () => { await cerrarSesion(); onLogout() }, 'Sesión cerrada')}>Cerrar sesión</button>

@@ -42,3 +42,4 @@ class UsuarioRespuesta(BaseModel):
     nombre_completo: str
     correo: EmailStr
     activo: bool
+    rol: str = "usuario"
