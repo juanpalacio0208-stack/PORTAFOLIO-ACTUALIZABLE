@@ -4,3 +4,7 @@ __pycache__/
 .pytest_cache/
 hu08/solicitudes.json
 hu08/solicitudes.tmp
+hu11/*.db
+hu11/*.db-journal
+hu11/*.db-wal
+hu11/*.db-shm

@@ -5,28 +5,42 @@ hasta implementar control de acceso para el rol administrador.
 """
 
 import json
-from fastapi.middleware.cors import CORSMiddleware
+
 from html import escape
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+
 from hu08.router import router as solicitudes_router
 from hu09.router import router as contacto_router
+from hu11.router import router as registro_router
+from hu12.router import router as login_router
 
+app = FastAPI(
+    title="Importaciones Euroamericanas — HU-06",
+    version="0.1.0",
+)
 
-app = FastAPI(title="Importaciones Euroamericanas — HU-06", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=False,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH"],
     allow_headers=["Content-Type"],
 )
+
 app.include_router(solicitudes_router)
 app.include_router(contacto_router)
+app.include_router(registro_router)
+app.include_router(login_router)
+
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")
 

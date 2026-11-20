@@ -1,4 +1,5 @@
 
+
 import { useEffect, useState } from 'react'
 import ProductoCard from '../components/ProductoCard'
 import { obtenerProductos } from '../services/productosApi'
@@ -6,9 +7,15 @@ import type { Producto } from '../types/Producto'
 
 interface Props {
   verDetalle: (producto: Producto) => void
+  abrirRegistro: () => void
+  abrirLogin: () => void
 }
 
-function PortafolioPage({ verDetalle }: Props) {
+function PortafolioPage({
+  verDetalle,
+  abrirRegistro,
+  abrirLogin,
+}: Props) {
   const [productos, setProductos] = useState<Producto[]>([])
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -19,12 +26,16 @@ function PortafolioPage({ verDetalle }: Props) {
     async function cargarProductos() {
       try {
         const datos = await obtenerProductos()
+
         if (activo) {
           setProductos(datos)
+          setError(null)
         }
       } catch {
         if (activo) {
-          setError('No fue posible cargar los productos. Intenta nuevamente.')
+          setError(
+            'No fue posible cargar los productos. Intenta nuevamente.'
+          )
         }
       } finally {
         if (activo) {
@@ -48,12 +59,28 @@ function PortafolioPage({ verDetalle }: Props) {
     <>
       <header className="header">
         <div className="contenedor navegacion">
-          <a href="#inicio" className="logo">Portafolio</a>
+          <a href="#inicio" className="logo">
+            Portafolio
+          </a>
+
           <nav>
             <a href="#inicio">Inicio</a>
             <a href="#productos">Productos</a>
-            <button type="button" className="boton-ingresar">
-              Ingresar
+
+            <button
+              type="button"
+              className="boton-ingresar"
+              onClick={abrirRegistro}
+            >
+              Registrarse
+            </button>
+
+            <button
+              type="button"
+              className="boton-ingresar"
+              onClick={abrirLogin}
+            >
+              Iniciar sesión
             </button>
           </nav>
         </div>
@@ -65,31 +92,51 @@ function PortafolioPage({ verDetalle }: Props) {
             <span className="hero-etiqueta">
               Productos importados
             </span>
-            <h1>Encuentra productos seleccionados para ti</h1>
+
+            <h1>
+              Encuentra productos seleccionados para ti
+            </h1>
+
             <p>
               Explora nuestro portafolio y conoce los productos
               disponibles actualmente.
             </p>
-            <a href="#productos" className="boton-principal">
+
+            <a
+              href="#productos"
+              className="boton-principal"
+            >
               Ver productos
             </a>
           </div>
         </section>
 
-        <section className="productos-seccion" id="productos">
+        <section
+          className="productos-seccion"
+          id="productos"
+        >
           <div className="contenedor">
             <div className="titulo-seccion">
               <span>Nuestro catálogo</span>
               <h2>Productos disponibles</h2>
-              <p>Conoce los productos disponibles para la venta.</p>
+
+              <p>
+                Conoce los productos disponibles para la venta.
+              </p>
             </div>
 
             {cargando ? (
-              <div className="sin-productos" role="status">
+              <div
+                className="sin-productos"
+                role="status"
+              >
                 <p>Cargando productos...</p>
               </div>
             ) : error ? (
-              <div className="sin-productos" role="alert">
+              <div
+                className="sin-productos"
+                role="alert"
+              >
                 <h3>Error al cargar productos</h3>
                 <p>{error}</p>
               </div>
@@ -104,9 +151,15 @@ function PortafolioPage({ verDetalle }: Props) {
                 ))}
               </div>
             ) : (
-              <div className="sin-productos" role="status">
+              <div
+                className="sin-productos"
+                role="status"
+              >
                 <h3>No hay productos disponibles</h3>
-                <p>Pronto tendremos nuevos productos para ti.</p>
+
+                <p>
+                  Pronto tendremos nuevos productos para ti.
+                </p>
               </div>
             )}
           </div>
@@ -116,7 +169,9 @@ function PortafolioPage({ verDetalle }: Props) {
       <footer>
         <div className="contenedor">
           <strong>Portafolio Actualizable</strong>
-          <p>Productos importados seleccionados para ti.</p>
+          <p>
+            Productos importados seleccionados para ti.
+          </p>
         </div>
       </footer>
     </>
