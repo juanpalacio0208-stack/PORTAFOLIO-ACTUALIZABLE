@@ -9,9 +9,10 @@ import '../login.css'
 interface Props {
   usuario: UsuarioAutenticado
   onLogout: () => void
+  onVolver: () => void
 }
 
-function CuentaPage({ usuario, onLogout }: Props) {
+function CuentaPage({ usuario, onLogout, onVolver }: Props) {
   const [error, setError] = useState('')
   const [cerrando, setCerrando] = useState(false)
 
@@ -36,6 +37,14 @@ function CuentaPage({ usuario, onLogout }: Props) {
         <p>Bienvenido, <strong>{usuario.nombre_completo}</strong>.</p>
         <p><strong>Correo:</strong> {usuario.correo}</p>
         <p>Has iniciado sesión correctamente.</p>
+
+        <button
+          type="button"
+          onClick={onVolver}
+          disabled={cerrando}
+        >
+          Volver al portafolio
+        </button>
 
         {error && <p role="alert">{error}</p>}
 
