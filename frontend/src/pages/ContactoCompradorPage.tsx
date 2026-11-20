@@ -1,8 +1,9 @@
-﻿
 import { useState } from 'react'
 import { guardarContacto } from '../services/contactoApi'
-import type { DatosContacto } from '../services/contactoApi'
+import type { DatosContacto, RespuestaContacto } from '../services/contactoApi'
+import { generarEnlaceWhatsApp } from '../services/whatsappApi'
 import '../contacto.css'
+import '../whatsapp.css'
 
 interface Props {
   solicitudId: string
@@ -20,7 +21,7 @@ function ContactoCompradorPage({
   const [correo, setCorreo] = useState('')
   const [errores, setErrores] = useState<Record<string, string>>({})
   const [guardando, setGuardando] = useState(false)
-  const [completado, setCompletado] = useState(false)
+  const [respuestaGuardada, setRespuestaGuardada] = useState<RespuestaContacto | null>(null)
   const [errorGeneral, setErrorGeneral] = useState('')
 
   function validar(): Record<string, string> {
@@ -62,8 +63,9 @@ function ContactoCompradorPage({
     setGuardando(true)
 
     try {
-      await guardarContacto(solicitudId, datos)
-      setCompletado(true)
+      // Solo se ofrece abrir WhatsApp después del guardado exitoso.
+      const respuesta = await guardarContacto(solicitudId, datos)
+      setRespuestaGuardada(respuesta)
     } catch (error) {
       setErrorGeneral(
         error instanceof Error ? error.message : 'Ocurrió un error.'
@@ -73,13 +75,44 @@ function ContactoCompradorPage({
     }
   }
 
-  if (completado) {
+  if (respuestaGuardada) {
+    const enlaceWhatsApp = generarEnlaceWhatsApp({
+      solicitudId: respuestaGuardada.solicitud_id,
+      productoNombre,
+      contacto: respuestaGuardada.contacto,
+    })
+
     return (
       <main className="contacto-contenedor">
         <section className="contacto-tarjeta" role="status">
           <h1>¡Datos guardados correctamente!</h1>
-          <p>Tu solicitud del producto <strong>{productoNombre}</strong> tiene los datos de contacto completos.</p>
-          <p>Ya está preparada para continuar mediante WhatsApp en HU-10.</p>
+          <p>
+            Tu solicitud del producto <strong>{productoNombre}</strong> tiene los datos de
+            contacto completos.
+          </p>
+          <p>Continúa por WhatsApp con la información ya preparada.</p>
+
+          {enlaceWhatsApp ? (
+            <a
+              className="contacto-whatsapp"
+              href={enlaceWhatsApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir WhatsApp para solicitar ${productoNombre}`}
+            >
+              Enviar solicitud por WhatsApp
+            </a>
+          ) : (
+            <p role="alert">
+              Los datos se guardaron, pero falta configurar el WhatsApp de Laura
+              en el archivo frontend/.env.local.
+            </p>
+          )}
+
+          <p className="contacto-whatsapp-aclaracion">
+            WhatsApp abrirá el mensaje listo para revisar. Debes presionar Enviar
+            dentro de WhatsApp para completar la comunicación.
+          </p>
           <button type="button" onClick={volver}>
             Volver al producto
           </button>
