@@ -1,0 +1,64 @@
+
+.login-contenedor {
+  min-height: 100vh;
+  padding: 48px 20px;
+  background: #f8f8f8;
+}
+
+.login-tarjeta {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-tarjeta h1 {
+  margin-bottom: 12px;
+}
+
+.login-tarjeta form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.login-tarjeta label {
+  font-weight: 600;
+}
+
+.login-tarjeta input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.login-tarjeta p[role="alert"] {
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.login-tarjeta button[type="submit"],
+.login-tarjeta button:not(.login-volver) {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #171717;
+  color: white;
+  cursor: pointer;
+}
+
+.login-tarjeta button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-volver {
+  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
