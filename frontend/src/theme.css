@@ -1,0 +1,145 @@
+/* Diseño institucional negro y dorado. Solo presentación: no altera las HU. */
+:root {
+  color-scheme: dark;
+  --negro: #080808;
+  --superficie: #171717;
+  --superficie-alta: #24211b;
+  --dorado: #d4af37;
+  --dorado-claro: #f3dea0;
+  --texto: #f5e9ca;
+  --muted: #d2c5a8;
+  --borde: #655221;
+}
+html, body, #root { min-height: 100%; background: var(--negro); color: var(--texto); }
+body { background: var(--negro); color: var(--texto); }
+h1, h2, h3, h4, strong, .logo, .detalle-logo, .detalle-precio, .producto-precio { color: var(--dorado-claro); }
+p, label, dt, dd { color: var(--texto); }
+a { color: var(--dorado-claro); }
+a:hover { color: #fff2c7; }
+button { transition: background-color .2s ease, border-color .2s ease, transform .2s ease; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--dorado-claro); outline-offset: 3px; }
+.header { background: rgba(8,8,8,.97); border-bottom: 1px solid var(--borde); }
+.navegacion { gap: 18px; }
+.marca-logo { display: inline-flex; align-items: center; gap: 11px; color: var(--dorado-claro); text-align: left; }
+.marca-logo img { width: 48px; height: 48px; object-fit: contain; flex: 0 0 auto; }
+.marca-logo span { font-size: clamp(.9rem, 1.7vw, 1.16rem); line-height: 1.2; }
+.header nav { gap: clamp(8px,2vw,24px); }
+.header nav a, .detalle-nav { color: var(--dorado-claro); }
+.boton-ingresar, .detalle-nav { border: 1px solid var(--borde); background: transparent; color: var(--dorado-claro); padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+.boton-ingresar:hover, .detalle-nav:hover { background: #2e2616; border-color: var(--dorado); }
+.hero { background: radial-gradient(ellipse at 80% 35%, #332710 0%, #15120d 35%, #080808 75%); color: var(--texto); border-bottom: 1px solid #332a18; }
+.hero-etiqueta, .titulo-seccion span { color: var(--dorado); }
+.hero h1 { color: var(--dorado-claro); }
+.hero p, .titulo-seccion p, .producto-contenido p, .sin-productos p, footer p { color: var(--muted); }
+.boton-principal, .boton-producto { display: inline-block; background: var(--dorado); color: #111; border: 1px solid var(--dorado); font-weight: 750; cursor: pointer; text-decoration: none; }
+.boton-principal:hover, .boton-producto:hover { background: var(--dorado-claro); color: #0b0b0b; border-color: var(--dorado-claro); }
+.boton-principal:disabled, .boton-producto:disabled { opacity: .55; cursor: not-allowed; }
+.productos-seccion { background: var(--negro); }
+.producto-card, .sin-productos { background: var(--superficie); color: var(--texto); border: 1px solid var(--borde); }
+.producto-card:hover { border-color: var(--dorado); box-shadow: 0 12px 28px rgba(212,175,55,.12); }
+.producto-estado { background: #342b16; color: #f5da86; border: 1px solid #74612f; }
+.producto-imagen, .detalle-imagen { background: #242424; }
+footer { background: #101010; border-top: 1px solid var(--borde); color: var(--texto); }
+.detalle-logo { padding: 0; background: transparent; border: none; cursor: pointer; }
+.boton-volver { color: var(--dorado-claro); }
+.detalle-informacion h1, .detalle-informacion h2 { color: var(--dorado-claro); }
+.detalle-informacion p, .detalle-atributos dd { color: var(--texto); }
+.detalle-atributos { border-top-color: var(--borde); }
+.detalle-aviso { background: var(--superficie-alta); border: 1px solid var(--borde); color: var(--texto); }
+.solicitud-confirmacion { background: #252413; border-color: var(--dorado); color: var(--texto); }
+.solicitud-confirmacion h2, .solicitud-confirmacion p { color: var(--dorado-claro); }
+.contacto-contenedor, .registro-contenedor, .login-contenedor { background: var(--negro); color: var(--texto); }
+.contacto-tarjeta, .registro-tarjeta, .login-tarjeta { background: var(--superficie); color: var(--texto); border: 1px solid var(--borde); box-shadow: 0 8px 28px rgba(0,0,0,.45); }
+.contacto-tarjeta h1, .registro-tarjeta h1, .login-tarjeta h1 { color: var(--dorado-claro); }
+.contacto-tarjeta label, .registro-tarjeta label, .login-tarjeta label { color: var(--texto); }
+.contacto-tarjeta input, .registro-tarjeta input, .login-tarjeta input { color: var(--texto); background: #101010; border: 1px solid #806a38; }
+.contacto-tarjeta input::placeholder, .registro-tarjeta input::placeholder, .login-tarjeta input::placeholder { color: #b0a58b; }
+.contacto-tarjeta button[type="submit"], .registro-tarjeta button[type="submit"], .registro-tarjeta button:not(.registro-volver), .login-tarjeta button[type="submit"], .login-tarjeta button:not(.login-volver) { background: var(--dorado); color: #111; border: 1px solid var(--dorado); }
+.contacto-tarjeta button[type="submit"]:hover, .registro-tarjeta button[type="submit"]:hover, .login-tarjeta button[type="submit"]:hover { background: var(--dorado-claro); }
+.contacto-volver, .registro-volver, .login-volver { color: var(--dorado-claro); background: transparent; cursor: pointer; }
+.contacto-tarjeta p[role="alert"], .registro-tarjeta p[role="alert"], .login-tarjeta p[role="alert"], .detalle-informacion p[role="alert"] { color: #ff9f9f !important; }
+@media(max-width:680px) {
+  .navegacion { padding-block: 12px; flex-wrap: wrap; }
+  .header nav { gap: 8px; flex-wrap: wrap; }
+  .boton-ingresar { padding: 9px 11px; font-size: .88rem; }
+  .marca-logo img { width: 40px; height: 40px; }
+  .hero { min-height: 360px; }
+  .contacto-tarjeta, .registro-tarjeta, .login-tarjeta { padding: 24px 18px; }
+}
+
+/* === FORMULARIOS NEGRO Y DORADO: INTEGRACION FINAL === */
+
+:is(.login-contenedor, .registro-contenedor, .contacto-contenedor) {
+  min-height: 100vh;
+  background: #080808 !important;
+  color: #f5e9ca !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) {
+  background: #171717 !important;
+  color: #f5e9ca !important;
+  border: 1px solid #8c722f !important;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.45) !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) h1,
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) h2 {
+  color: #d4af37 !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) p,
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) label {
+  color: #f5e9ca;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input:not([type="checkbox"]):not([type="radio"]), textarea, select) {
+  background: #101010 !important;
+  color: #f5e9ca !important;
+  border: 1px solid #8c722f !important;
+  border-radius: 8px;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input, textarea)::placeholder {
+  color: #b9ad94;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input, textarea, select):focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button[type="submit"] {
+  background: #d4af37 !important;
+  color: #111111 !important;
+  border: 1px solid #d4af37 !important;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button[type="submit"]:hover {
+  background: #f3dea0 !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Mantener estilos oscuros de preferencias y recuperaci?n */
+
+.hu14-fondo, .hu18-fondo {
+  color-scheme: dark;
+}
+
+.hu14-panel, .hu18-tarjeta {
+  background: #141414;
+  border-color: #8c722f;
+}

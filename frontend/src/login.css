@@ -1,0 +1,82 @@
+
+.login-contenedor {
+  min-height: 100vh;
+  padding: 48px 20px;
+  background: #101010;
+}
+
+.login-tarjeta {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: #191919;
+  color: #f5f0e3;
+  border: 1px solid #4d3c16;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+.login-tarjeta h1 {
+  margin-bottom: 12px;
+}
+
+.login-tarjeta form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.login-tarjeta label {
+  font-weight: 600;
+}
+
+.login-tarjeta input {
+  padding: 12px;
+  border: 1px solid #6a5a36;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.login-tarjeta p[role="alert"] {
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.login-tarjeta button[type="submit"],
+.login-tarjeta button:not(.login-volver) {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #d5ad49;
+  color: #17130a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-tarjeta input,
+.login-tarjeta select {
+  background: #101010;
+  color: #f5f0e3;
+}
+
+.login-tarjeta label { color: #e2c66f; }
+.login-volver { color: #e2c66f; }
+.hu13-tarjeta { max-width: 1100px; }
+.hu13-tabla-wrap { overflow-x: auto; margin-top: 20px; }
+.hu13-tabla { width: 100%; border-collapse: collapse; min-width: 700px; }
+.hu13-tabla th { color: #e2c66f; text-align: left; background: #101010; }
+.hu13-tabla th, .hu13-tabla td { padding: 13px 12px; border-bottom: 1px solid #3b3425; }
+.hu13-tabla select { padding: 8px; border: 1px solid #6a5a36; border-radius: 6px; }
+
+.login-tarjeta button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-volver {
+  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
