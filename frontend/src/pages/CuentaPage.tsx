@@ -5,13 +5,15 @@ import {
   type UsuarioAutenticado,
 } from '../services/loginApi'
 import '../login.css'
+import '../consentimiento.css'
 
 interface Props {
   usuario: UsuarioAutenticado
   onLogout: () => void
+  onPreferencias: () => void
 }
 
-function CuentaPage({ usuario, onLogout }: Props) {
+function CuentaPage({ usuario, onLogout, onPreferencias }: Props) {
   const [error, setError] = useState('')
   const [cerrando, setCerrando] = useState(false)
 
@@ -36,6 +38,10 @@ function CuentaPage({ usuario, onLogout }: Props) {
         <p>Bienvenido, <strong>{usuario.nombre_completo}</strong>.</p>
         <p><strong>Correo:</strong> {usuario.correo}</p>
         <p>Has iniciado sesión correctamente.</p>
+
+        <button type="button" className="hu14-abrir" onClick={onPreferencias}>
+          Preferencias de notificaciones
+        </button>
 
         {error && <p role="alert">{error}</p>}
 
