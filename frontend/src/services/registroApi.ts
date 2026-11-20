@@ -18,7 +18,7 @@ export async function registrarUsuario(
   let respuesta: Response
 
   try {
-    respuesta = await fetch('http://127.0.0.1:8000/api/auth/registro', {
+    respuesta = await fetch('http://localhost:8000/api/auth/registro', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -5,9 +5,10 @@ import type { Producto } from '../types/Producto'
 interface Props {
   verDetalle: (producto: Producto) => void
   abrirRegistro: () => void
+  abrirLogin: () => void
 }
 
-function PortafolioPage({ verDetalle, abrirRegistro }: Props) {
+function PortafolioPage({ verDetalle, abrirRegistro, abrirLogin }: Props) {
   const productosDisponibles = productos.filter((producto) => producto.disponible)
 
   return (
@@ -19,6 +20,7 @@ function PortafolioPage({ verDetalle, abrirRegistro }: Props) {
             <a href="#inicio">Inicio</a>
             <a href="#productos">Productos</a>
             <button type="button" className="boton-ingresar" onClick={abrirRegistro}>Registrarse</button>
+            <button type="button" className="boton-ingresar" onClick={abrirLogin}> Iniciar sesión</button>
           </nav>
         </div>
       </header>
