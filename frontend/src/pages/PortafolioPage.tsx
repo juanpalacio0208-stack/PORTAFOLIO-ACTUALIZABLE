@@ -59,8 +59,9 @@ function PortafolioPage({
     <>
       <header className="header">
         <div className="contenedor navegacion">
-          <a href="#inicio" className="logo">
-            Portafolio
+          <a href="#inicio" className="logo marca-logo" aria-label="LR Importaciones Euroamericanas - Inicio">
+            <img src="/logo.png" alt="Logo LR Importaciones Euroamericanas" />
+            <span>LR Importaciones</span>
           </a>
 
           <nav>
