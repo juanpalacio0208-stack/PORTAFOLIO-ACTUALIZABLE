@@ -19,12 +19,12 @@ from hu08.router import router as solicitudes_router
 from hu09.router import router as contacto_router
 from hu11.router import router as registro_router
 from hu12.router import router as login_router
+from hu15_16_19.router import router as novedades_router
 
 app = FastAPI(
     title="Importaciones Euroamericanas — HU-06",
     version="0.1.0",
 )
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -33,15 +33,15 @@ app.add_middleware(
         "http://127.0.0.1:5173",
     ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH"],
+    allow_methods=["GET", "POST", "PUT", "PATCH"],
     allow_headers=["Content-Type"],
 )
-
 
 app.include_router(solicitudes_router)
 app.include_router(contacto_router)
 app.include_router(registro_router)
 app.include_router(login_router)
+app.include_router(novedades_router)
 
 ARCHIVO_PRODUCTOS = Path(__file__).resolve().parent / "productos.json"
 app.mount("/static", StaticFiles(directory=Path(__file__).resolve().parent / "static"), name="static")

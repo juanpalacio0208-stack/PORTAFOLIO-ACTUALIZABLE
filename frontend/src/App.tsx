@@ -87,6 +87,7 @@ function App() {
     return (
       <CuentaPage
         usuario={usuario}
+        volverCatalogo={() => setVista('portafolio')}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')

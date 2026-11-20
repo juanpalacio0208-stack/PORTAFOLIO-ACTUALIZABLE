@@ -1,5 +1,5 @@
 
-const API_URL = 'http://127.0.0.1:8000'
+import { API_URL } from './apiConfig'
 
 export interface SolicitudProducto {
   id: string
@@ -14,6 +14,7 @@ export async function crearSolicitud(
 ): Promise<SolicitudProducto> {
   const respuesta = await fetch(`${API_URL}/api/solicitudes`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -28,7 +29,7 @@ export async function crearSolicitud(
     if (respuesta.status === 404) {
       mensaje = 'El producto seleccionado ya no existe.'
     } else if (respuesta.status === 409) {
-      mensaje = 'El producto ya no está disponible.'
+      mensaje = 'El producto ya no estÃ¡ disponible.'
     }
 
     throw new Error(mensaje)

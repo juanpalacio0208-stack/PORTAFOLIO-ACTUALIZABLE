@@ -1,5 +1,5 @@
 
-const API_URL = 'http://127.0.0.1:8000'
+import { API_URL } from './apiConfig'
 
 export interface UsuarioAutenticado {
   id: number
@@ -22,11 +22,11 @@ export async function iniciarSesion(
   })
 
   if (respuesta.status === 401) {
-    throw new Error('Correo electrónico o contraseña incorrectos.')
+    throw new Error('Correo electrÃ³nico o contraseÃ±a incorrectos.')
   }
 
   if (!respuesta.ok) {
-    throw new Error('No fue posible iniciar sesión.')
+    throw new Error('No fue posible iniciar sesiÃ³n.')
   }
 
   const datos = await respuesta.json()
@@ -41,7 +41,7 @@ export async function consultarSesion(): Promise<UsuarioAutenticado | null> {
   if (respuesta.status === 401) return null
 
   if (!respuesta.ok) {
-    throw new Error('No fue posible consultar la sesión.')
+    throw new Error('No fue posible consultar la sesiÃ³n.')
   }
 
   return (await respuesta.json()) as UsuarioAutenticado
@@ -54,6 +54,6 @@ export async function cerrarSesion(): Promise<void> {
   })
 
   if (!respuesta.ok) {
-    throw new Error('No fue posible cerrar sesión.')
+    throw new Error('No fue posible cerrar sesiÃ³n.')
   }
 }
