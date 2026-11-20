@@ -33,6 +33,9 @@ def inicializar_base_datos():
             )
             """
         )
+        columnas = {fila[1] for fila in conexion.execute("PRAGMA table_info(usuarios)")}
+        if "notificaciones_autorizadas" not in columnas:
+            conexion.execute("ALTER TABLE usuarios ADD COLUMN notificaciones_autorizadas INTEGER NOT NULL DEFAULT 0")
 
 
 def buscar_usuario_por_correo(correo: str):

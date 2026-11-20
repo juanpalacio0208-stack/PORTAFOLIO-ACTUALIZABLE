@@ -116,7 +116,7 @@ function App() {
     return (
       <CuentaPage
         usuario={usuario}
-        onVolver={() => setVista('portafolio')}
+        volverCatalogo={() => setVista('portafolio')}
         onPreferencias={() => setVista('notificaciones')}
         onLogout={() => {
           setUsuario(null)

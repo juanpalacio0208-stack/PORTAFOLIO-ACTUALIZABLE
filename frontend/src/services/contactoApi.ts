@@ -1,3 +1,4 @@
+import { API_URL } from './apiConfig'
 
 export interface DatosContacto {
   nombre_completo: string
@@ -18,7 +19,7 @@ export async function guardarContacto(
   datos: DatosContacto
 ): Promise<RespuestaContacto> {
   const respuesta = await fetch(
-    `http://127.0.0.1:8000/api/solicitudes/${encodeURIComponent(solicitudId)}/contacto`,
+    `${API_URL}/api/solicitudes/${encodeURIComponent(solicitudId)}/contacto`,
     {
       method: 'PATCH',
       headers: {
@@ -33,7 +34,7 @@ export async function guardarContacto(
       throw new Error('Revisa los datos obligatorios del formulario.')
     }
     if (respuesta.status === 404) {
-      throw new Error('No se encontró la solicitud.')
+      throw new Error('No se encontrÃ³ la solicitud.')
     }
     throw new Error('No fue posible guardar los datos de contacto.')
   }
