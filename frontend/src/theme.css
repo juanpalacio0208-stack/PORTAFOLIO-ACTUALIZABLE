@@ -66,3 +66,80 @@ footer { background: #101010; border-top: 1px solid var(--borde); color: var(--t
   .hero { min-height: 360px; }
   .contacto-tarjeta, .registro-tarjeta, .login-tarjeta { padding: 24px 18px; }
 }
+
+/* === FORMULARIOS NEGRO Y DORADO: INTEGRACION FINAL === */
+
+:is(.login-contenedor, .registro-contenedor, .contacto-contenedor) {
+  min-height: 100vh;
+  background: #080808 !important;
+  color: #f5e9ca !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) {
+  background: #171717 !important;
+  color: #f5e9ca !important;
+  border: 1px solid #8c722f !important;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.45) !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) h1,
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) h2 {
+  color: #d4af37 !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) p,
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta) label {
+  color: #f5e9ca;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input:not([type="checkbox"]):not([type="radio"]), textarea, select) {
+  background: #101010 !important;
+  color: #f5e9ca !important;
+  border: 1px solid #8c722f !important;
+  border-radius: 8px;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input, textarea)::placeholder {
+  color: #b9ad94;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+:is(input, textarea, select):focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button[type="submit"] {
+  background: #d4af37 !important;
+  color: #111111 !important;
+  border: 1px solid #d4af37 !important;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button[type="submit"]:hover {
+  background: #f3dea0 !important;
+}
+
+:is(.login-tarjeta, .registro-tarjeta, .contacto-tarjeta)
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Mantener estilos oscuros de preferencias y recuperaci?n */
+
+.hu14-fondo, .hu18-fondo {
+  color-scheme: dark;
+}
+
+.hu14-panel, .hu18-tarjeta {
+  background: #141414;
+  border-color: #8c722f;
+}
