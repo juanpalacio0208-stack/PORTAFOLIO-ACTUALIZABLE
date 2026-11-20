@@ -51,11 +51,12 @@ function ProductoDetallePage({
       <header className="header">
         <div className="contenedor navegacion">
           <button
-            className="detalle-logo"
+            className="detalle-logo marca-logo"
             type="button"
             onClick={volver}
           >
-            Portafolio
+            <img src="/logo.png" alt="Logo LR Importaciones Euroamericanas" />
+            <span>LR Importaciones</span>
           </button>
 
           <nav>
