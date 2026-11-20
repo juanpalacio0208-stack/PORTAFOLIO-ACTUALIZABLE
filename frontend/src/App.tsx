@@ -6,6 +6,8 @@ import ProductoDetallePage from './pages/ProductoDetallePage'
 import ContactoCompradorPage from './pages/ContactoCompradorPage'
 import RegistroPage from './pages/RegistroPage'
 import LoginPage from './pages/LoginPage'
+import RecuperarContrasenaPage from './pages/RecuperarContrasenaPage'
+import RestablecerContrasenaPage from './pages/RestablecerContrasenaPage'
 import CuentaPage from './pages/CuentaPage'
 
 import {
@@ -18,10 +20,15 @@ import type { SolicitudProducto } from './services/solicitudesApi'
 
 import './detalle-producto.css'
 
-type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta'
+type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'recuperar' | 'restablecer'
 
 function App() {
-  const [vista, setVista] = useState<Vista>('portafolio')
+  const [tokenRestablecimiento] = useState(() =>
+    new URLSearchParams(window.location.hash.slice(1)).get('recuperar_token') ?? ''
+  )
+  const [vista, setVista] = useState<Vista>(
+    tokenRestablecimiento ? 'restablecer' : 'portafolio'
+  )
 
   const [productoSeleccionado, setProductoSeleccionado] =
     useState<Producto | null>(null)
@@ -71,10 +78,27 @@ function App() {
     )
   }
 
+  if (vista === 'recuperar') {
+    return <RecuperarContrasenaPage volver={() => setVista('login')} />
+  }
+
+  if (vista === 'restablecer') {
+    return (
+      <RestablecerContrasenaPage
+        token={tokenRestablecimiento}
+        volver={() => {
+          window.history.replaceState({}, '', window.location.pathname + window.location.search)
+          setVista('login')
+        }}
+      />
+    )
+  }
+
   if (vista === 'login') {
     return (
       <LoginPage
         volver={() => setVista('portafolio')}
+        abrirRecuperacion={() => setVista('recuperar')}
         onLogin={(datos) => {
           setUsuario(datos)
           setVista('cuenta')
@@ -87,6 +111,7 @@ function App() {
     return (
       <CuentaPage
         usuario={usuario}
+        onVolver={() => setVista('portafolio')}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')

@@ -6,13 +6,15 @@ import {
   type UsuarioAutenticado,
 } from '../services/loginApi'
 import '../login.css'
+import '../recuperacion.css'
 
 interface Props {
   volver: () => void
   onLogin: (usuario: UsuarioAutenticado) => void
+  abrirRecuperacion: () => void
 }
 
-function LoginPage({ volver, onLogin }: Props) {
+function LoginPage({ volver, onLogin, abrirRecuperacion }: Props) {
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
   const [error, setError] = useState('')
@@ -80,6 +82,9 @@ function LoginPage({ volver, onLogin }: Props) {
             {cargando ? 'Ingresando...' : 'Iniciar sesión'}
           </button>
         </form>
+        <button type="button" className="hu18-link" onClick={abrirRecuperacion}>
+          ¿Olvidaste tu contraseña?
+        </button>
       </section>
     </main>
   )

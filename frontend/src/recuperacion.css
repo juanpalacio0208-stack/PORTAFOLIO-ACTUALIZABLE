@@ -1,0 +1,52 @@
+/* HU-18: estilos locales negro y dorado, sin modificar CSS compartidos. */
+.hu18-fondo {
+  min-height: 100vh;
+  padding: 64px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 20% 0%, #292111, #090909 65%);
+  color: #f5f0e5;
+}
+.hu18-tarjeta {
+  width: min(100%, 460px);
+  background: #141414;
+  border: 1px solid #8b713a;
+  box-shadow: 0 18px 55px #0009;
+  border-radius: 16px;
+  padding: clamp(24px, 5vw, 42px);
+}
+.hu18-etiqueta {
+  color: #d6b566;
+  letter-spacing: .17em;
+  font-size: .68rem;
+  font-weight: 700;
+}
+.hu18-tarjeta h1 { font-size: clamp(1.6rem, 4vw, 2rem); margin: 12px 0; color: #f9e4b2; }
+.hu18-tarjeta p { color: #d0c6b5; line-height: 1.6; }
+.hu18-tarjeta form { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.hu18-tarjeta label { font-size: .9rem; font-weight: 650; color: #f3e4bd; }
+.hu18-tarjeta input {
+  width: 100%; padding: 13px; border-radius: 8px;
+  border: 1px solid #746443; background: #242424; color: #fff;
+  font: inherit;
+}
+.hu18-tarjeta input:focus { outline: 2px solid #d6b566; outline-offset: 2px; }
+.hu18-principal {
+  width: 100%; margin-top: 14px; padding: 14px 16px;
+  border: 1px solid #ba934a; border-radius: 9px;
+  background: linear-gradient(135deg, #e9cf8b, #b58b3d);
+  color: #1a150c; font-weight: 750; cursor: pointer; font: inherit;
+}
+.hu18-principal:disabled { opacity: .6; cursor: wait; }
+.hu18-volver, .hu18-link {
+  background: transparent; border: 0; color: #b99043;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+  font: inherit;
+}
+.hu18-volver { margin-top: 20px; padding: 4px 0; }
+.hu18-link { display: block; margin: 14px auto 0; }
+.hu18-volver:hover, .hu18-link:hover { color: #e9cf8b; }
+.hu18-exito { background: #1e2e23; border: 1px solid #5f9a74; border-radius: 10px;
+  color: #ddf7e3; padding: 16px; margin-top: 24px; }
+.hu18-error { color: #ffc0c0 !important; background: #3a1b1b; padding: 10px; border-radius: 8px; }
