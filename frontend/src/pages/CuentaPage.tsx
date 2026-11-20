@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { cerrarSesion, type UsuarioAutenticado } from '../services/loginApi'
 import { consentimiento, cambiarConsentimiento, notificaciones, marcarLeida, historial, enviar, soyAdministradora, type Notificacion, type HistorialSolicitud } from '../services/novedadesApi'
+import PerfilEditor from './PerfilEditor'
 import '../login.css'
 import '../novedades.css'
 import '../consentimiento.css'
 
-interface Props { usuario: UsuarioAutenticado; onLogout: () => void; volverCatalogo?: () => void; onPreferencias: () => void; onAdministrarUsuarios: () => void }
+interface Props { usuario: UsuarioAutenticado; onLogout: () => void; volverCatalogo?: () => void; onPreferencias: () => void; onAdministrarUsuarios: () => void; onUsuarioActualizado: (usuario: UsuarioAutenticado) => void }
 
-export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPreferencias, onAdministrarUsuarios }: Props) {
+export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPreferencias, onAdministrarUsuarios, onUsuarioActualizado }: Props) {
   const [error, setError] = useState('')
   const [aviso, setAviso] = useState('')
   const [permiso, setPermiso] = useState(false)
@@ -47,6 +48,10 @@ export default function CuentaPage({ usuario, onLogout, volverCatalogo, onPrefer
           Administrar usuarios
         </button>
       )}
+      <PerfilEditor
+        usuario={usuario}
+        onUsuarioActualizado={onUsuarioActualizado}
+      />
       <button type="button" className="hu14-abrir" onClick={onPreferencias}>Preferencias de notificaciones</button>
       {volverCatalogo && <button type="button" onClick={volverCatalogo}>Volver al catálogo</button>}
       <button type="button" onClick={() => void ejecutar(async () => { await cerrarSesion(); onLogout() }, 'Sesión cerrada')}>Cerrar sesión</button>

@@ -124,6 +124,7 @@ function App() {
         volverCatalogo={() => setVista('portafolio')}
         onPreferencias={() => setVista('notificaciones')}
         onAdministrarUsuarios={() => setVista('usuarios')}
+        onUsuarioActualizado={setUsuario}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')
