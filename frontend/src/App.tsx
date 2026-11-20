@@ -87,6 +87,7 @@ function App() {
     return (
       <CuentaPage
         usuario={usuario}
+        onUsuarioActualizado={setUsuario}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')

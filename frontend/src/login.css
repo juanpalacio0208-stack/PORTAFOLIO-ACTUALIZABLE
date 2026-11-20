@@ -2,7 +2,7 @@
 .login-contenedor {
   min-height: 100vh;
   padding: 48px 20px;
-  background: #f8f8f8;
+  background: #101010;
 }
 
 .login-tarjeta {
@@ -10,8 +10,10 @@
   margin: 0 auto;
   padding: 32px;
   border-radius: 16px;
-  background: white;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  background: #191919;
+  color: #f5f0e3;
+  border: 1px solid #4d3c16;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
 }
 
 .login-tarjeta h1 {
@@ -31,7 +33,7 @@
 
 .login-tarjeta input {
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #6a5a36;
   border-radius: 8px;
   font: inherit;
 }
@@ -46,10 +48,14 @@
   padding: 14px;
   border: none;
   border-radius: 8px;
-  background: #171717;
-  color: white;
+  background: #d5ad49;
+  color: #17130a;
+  font-weight: 700;
   cursor: pointer;
 }
+
+.login-tarjeta input { background: #101010; color: #f5f0e3; }
+.login-tarjeta label { color: #e2c66f; }
 
 .login-tarjeta button:disabled {
   opacity: 0.6;

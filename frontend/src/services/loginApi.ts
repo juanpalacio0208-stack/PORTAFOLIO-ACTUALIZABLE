@@ -8,6 +8,18 @@ export interface UsuarioAutenticado {
   activo: boolean
 }
 
+export async function actualizarPerfil(cambios: { nombre_completo?: string; correo?: string; contrasena?: string }): Promise<UsuarioAutenticado> {
+  const respuesta = await fetch(`${API_URL}/api/auth/me`, {
+    method: 'PATCH', credentials: 'include',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cambios),
+  })
+  if (!respuesta.ok) {
+    const datos = await respuesta.json().catch(() => null)
+    throw new Error(datos?.detail ?? 'No fue posible actualizar el perfil.')
+  }
+  return (await respuesta.json()) as UsuarioAutenticado
+}
+
 export async function iniciarSesion(
   correo: string,
   contrasena: string

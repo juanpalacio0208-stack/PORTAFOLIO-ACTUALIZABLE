@@ -84,3 +84,27 @@ def crear_usuario(datos: UsuarioRegistro):
         ).fetchone()
 
     return dict(fila)
+
+
+def actualizar_perfil(usuario_id: int, cambios: dict):
+    inicializar_base_datos()
+    valores = {}
+    if "nombre_completo" in cambios:
+        valores["nombre_completo"] = cambios["nombre_completo"]
+    if "correo" in cambios:
+        valores["correo"] = str(cambios["correo"]).strip().lower()
+    if "contrasena" in cambios:
+        valores["contrasena_hash"] = password_hash.hash(cambios["contrasena"])
+    asignaciones = ", ".join(f"{campo} = ?" for campo in valores)
+    with conectar() as conexion:
+        cursor = conexion.execute(
+            f"UPDATE usuarios SET {asignaciones} WHERE id = ?",
+            (*valores.values(), usuario_id),
+        )
+        if cursor.rowcount == 0:
+            return None
+        fila = conexion.execute(
+            "SELECT id, nombre_completo, correo, activo FROM usuarios WHERE id = ?",
+            (usuario_id,),
+        ).fetchone()
+    return dict(fila)
