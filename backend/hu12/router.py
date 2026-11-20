@@ -64,6 +64,7 @@ def iniciar_sesion(datos: CredencialesLogin, response: Response):
             "nombre_completo": usuario["nombre_completo"],
             "correo": usuario["correo"],
             "activo": bool(usuario["activo"]),
+            "rol": usuario["rol"],
         },
     }
 

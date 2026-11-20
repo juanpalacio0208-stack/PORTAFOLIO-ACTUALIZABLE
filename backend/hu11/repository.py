@@ -1,5 +1,6 @@
 
 import sqlite3
+import os
 from pathlib import Path
 
 from pwdlib import PasswordHash
@@ -29,10 +30,25 @@ def inicializar_base_datos():
                 correo TEXT NOT NULL UNIQUE COLLATE NOCASE,
                 contrasena_hash TEXT NOT NULL,
                 activo INTEGER NOT NULL DEFAULT 1,
+                rol TEXT NOT NULL DEFAULT 'usuario',
                 fecha_registro TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
             """
         )
+        columnas = {
+            fila["name"]
+            for fila in conexion.execute("PRAGMA table_info(usuarios)")
+        }
+        if "rol" not in columnas:
+            conexion.execute(
+                "ALTER TABLE usuarios ADD COLUMN rol TEXT NOT NULL DEFAULT 'usuario'"
+            )
+        correo_admin = os.getenv("ADMIN_CORREO", "").strip().lower()
+        if correo_admin:
+            conexion.execute(
+                "UPDATE usuarios SET rol = 'administrador' WHERE correo = ?",
+                (correo_admin,),
+            )
 
 
 def buscar_usuario_por_correo(correo: str):
@@ -76,7 +92,7 @@ def crear_usuario(datos: UsuarioRegistro):
 
         fila = conexion.execute(
             """
-            SELECT id, nombre_completo, correo, activo
+            SELECT id, nombre_completo, correo, activo, rol
             FROM usuarios
             WHERE id = ?
             """,

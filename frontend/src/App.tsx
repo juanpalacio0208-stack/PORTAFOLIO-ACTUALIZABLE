@@ -7,6 +7,7 @@ import ContactoCompradorPage from './pages/ContactoCompradorPage'
 import RegistroPage from './pages/RegistroPage'
 import LoginPage from './pages/LoginPage'
 import CuentaPage from './pages/CuentaPage'
+import AdministrarUsuariosPage from './pages/AdministrarUsuariosPage'
 
 import {
   consultarSesion,
@@ -18,7 +19,7 @@ import type { SolicitudProducto } from './services/solicitudesApi'
 
 import './detalle-producto.css'
 
-type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta'
+type Vista = 'portafolio' | 'registro' | 'login' | 'cuenta' | 'usuarios'
 
 function App() {
   const [vista, setVista] = useState<Vista>('portafolio')
@@ -83,10 +84,15 @@ function App() {
     )
   }
 
+  if (vista === 'usuarios' && usuario?.rol === 'administrador') {
+    return <AdministrarUsuariosPage volver={() => setVista('cuenta')} />
+  }
+
   if (vista === 'cuenta' && usuario) {
     return (
       <CuentaPage
         usuario={usuario}
+        onAdministrarUsuarios={() => setVista('usuarios')}
         onLogout={() => {
           setUsuario(null)
           setVista('portafolio')
